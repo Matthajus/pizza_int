@@ -13,14 +13,18 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class MysqlUserDao implements UserDao {
 
+	// napojenie sa na tabulku Users v databaze
+
 	private JdbcTemplate jdbcTemplate;
 
 	public MysqlUserDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	// metoda na ziskanie vsetkych userov z databazy
 	public List<User> getAll() {
 		String sql = "SELECT idUsers, Name, Surname, Login, Password, Email, Tel_number, IsicCardNumber FROM users ORDER BY idUsers;";
+		// postupne prechadzame databazou a ukladame userov do listu, ktory na konci vratime
 		List<User> users = jdbcTemplate.query(sql, new ResultSetExtractor<List<User>>() {
 
 			public List<User> extractData(ResultSet rs) throws SQLException, DataAccessException {
@@ -45,11 +49,14 @@ public class MysqlUserDao implements UserDao {
 		return users;
 	}
 
+	// metoda na zistenie, ci sa v databaze nachadza user podla loginu a hesla
 	public User getUserByLogin(String login, String password) {
 		String sql = "SELECT idUsers, Name, Surname, Login, Password, Email, Tel_number, IsicCardNumber, Role FROM users WHERE Login = ? and Password = ?;";
-		
+
 		try {
-			User user = jdbcTemplate.queryForObject(sql, new Object[] { login,password  },new RowMapper<User>() {
+			// ak sme nasli takeho usera, ktory ma prislusny login a heslo, tak ho
+			// nasetujeme a vratime ho (otazniky v selecte sa nizssie nahradia za meno a heslo)
+			User user = jdbcTemplate.queryForObject(sql, new Object[] { login, password }, new RowMapper<User>() {
 
 				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 					User user = new User();
@@ -63,9 +70,11 @@ public class MysqlUserDao implements UserDao {
 					user.setIsicCardNumber(rs.getString("IsicCardNumber"));
 					user.setRole(rs.getInt("Role"));
 					return user;
-				}});
+				}
+			});
 			return user;
-		} catch (EmptyResultDataAccessException  e) {
+		} catch (EmptyResultDataAccessException e) {
+			// ak sa taky user nenachadza vratime null
 			return null;
 		}
 	}
