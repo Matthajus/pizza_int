@@ -7,9 +7,18 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 public enum DaoFactory {
 	INSTANCE;
 
+	private MysqlPizzaDao mysqlPizzaDao;
 	private MysqlUserDao mysqlUserDao;
 	private JdbcTemplate jdbcTemplate;
 
+	// napojenie sa na tabulku pizzaList
+	public MysqlPizzaDao getPizzaDao() {
+		if (mysqlPizzaDao == null) {
+			mysqlPizzaDao = new MysqlPizzaDao(getJdbcTemplate());
+		}
+		return mysqlPizzaDao;
+	}
+	
 	// napojenie sa na tabulku Users
 	public MysqlUserDao getUserDao() {
 		if (mysqlUserDao == null) {

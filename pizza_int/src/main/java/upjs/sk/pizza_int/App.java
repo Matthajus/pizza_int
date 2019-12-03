@@ -35,8 +35,15 @@ public class App extends Application {
 			System.out.println(user2.toString());
 		}
 		
+		List<Pizza> pizza = DaoFactory.INSTANCE.getPizzaDao().getAll();
+		for (Pizza pizza2 : pizza) {
+			System.out.println(pizza2.toString());
+		}
+		
 		System.out.println(DaoFactory.INSTANCE.getUserDao().getUserByLogin("rico", "123"));
 
+		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getById(3));
+		
 		launch(args);
 
 	}

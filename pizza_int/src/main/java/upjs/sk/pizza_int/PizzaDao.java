@@ -6,8 +6,8 @@ public interface PizzaDao {
 
 	List<Pizza> getAll();
 
-	Pizza save(Pizza subject);
+	Pizza save(Pizza pizza);
 
-	Pizza getById(long subjectID);
+	Pizza getById(long pizzaId);
 
 }
