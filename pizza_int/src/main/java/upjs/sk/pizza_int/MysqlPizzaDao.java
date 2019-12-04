@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class MysqlPizzaDao implements PizzaDao {
 	
-	// napojenie sa na tabulku pizzaList v databaze
+	// napojenie sa na tabulku pizzaList v databaze ...
 	
 	private JdbcTemplate jdbcTemplate;
 	
@@ -21,7 +21,7 @@ public class MysqlPizzaDao implements PizzaDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	// metoda na ziskanie vsetkych pizz z databazy
+	// metoda na ziskanie vsetkych pizz z databazy ...
 	public List<Pizza> getAll() {
 		String sql = "SELECT idPizzaList, Name, Description, Weight, WeightType, Price, Currency FROM pizzalist ORDER BY idPizzaList;";
 		// postupne prechadzame databazou a ukladame pizze do listu, ktory na konci vratime
