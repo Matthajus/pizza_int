@@ -40,6 +40,11 @@ public class App extends Application {
 			System.out.println(pizza2.toString());
 		}
 		
+		List<Order>order = DaoFactory.INSTANCE.getOrderDao().getAll();
+		for (Order order2 : order) {
+			System.out.println(order2.toString());
+		}
+		
 		System.out.println(DaoFactory.INSTANCE.getUserDao().getUserByLogin("rico", "123"));
 
 		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getById(3));

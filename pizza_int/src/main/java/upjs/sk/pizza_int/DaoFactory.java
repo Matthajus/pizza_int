@@ -9,6 +9,7 @@ public enum DaoFactory {
 
 	private MysqlPizzaDao mysqlPizzaDao;
 	private MysqlUserDao mysqlUserDao;
+	private MysqlOrderDao mysqlOrderDao;
 	private JdbcTemplate jdbcTemplate;
 
 	// napojenie sa na tabulku pizzaList
@@ -19,13 +20,21 @@ public enum DaoFactory {
 		return mysqlPizzaDao;
 	}
 	
-	// napojenie sa na tabulku Users
-	public MysqlUserDao getUserDao() {
-		if (mysqlUserDao == null) {
-			mysqlUserDao = new MysqlUserDao(getJdbcTemplate());
+	// napojenie sa na tabulku Orders
+	public MysqlOrderDao getOrderDao() {
+		if (mysqlOrderDao == null) {
+			mysqlOrderDao = new MysqlOrderDao(getJdbcTemplate());
 		}
-		return mysqlUserDao;
+		return mysqlOrderDao;
 	}
+	
+	// napojenie sa na tabulku Users
+		public MysqlUserDao getUserDao() {
+			if (mysqlUserDao == null) {
+				mysqlUserDao = new MysqlUserDao(getJdbcTemplate());
+			}
+			return mysqlUserDao;
+		}
 
 	// napojenie databazy s projektom
 	private JdbcTemplate getJdbcTemplate() {

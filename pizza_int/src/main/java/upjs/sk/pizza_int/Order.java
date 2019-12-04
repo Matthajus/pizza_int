@@ -1,11 +1,12 @@
 package upjs.sk.pizza_int;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Order {
 
 	private Long id;
-	private LocalDateTime date;
+	private Date date;
 	private String adress;
 	private Long idPizza;
 	private Long idUser;
@@ -18,11 +19,11 @@ public class Order {
 		this.id = id;
 	}
 
-	public LocalDateTime getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
