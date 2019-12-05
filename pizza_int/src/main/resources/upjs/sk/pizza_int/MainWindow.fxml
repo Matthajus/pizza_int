@@ -15,12 +15,12 @@
             <Image url="@Background.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="15.0" layoutY="88.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.6" prefHeight="272.0" prefWidth="570.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0">
+      <TableView fx:id="pizzaListTableView" layoutX="15.0" layoutY="88.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.6" prefHeight="272.0" prefWidth="570.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0">
          <effect>
             <InnerShadow choke="0.21" color="#2c170e" height="41.0" radius="21.0" width="45.0" />
          </effect>
       </TableView>
-      <Button layoutX="377.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #e9d49e;" text="Order" textFill="#2c170e" AnchorPane.bottomAnchor="8.0">
+      <Button fx:id="orderButton" layoutX="377.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #e9d49e;" text="Order" textFill="#2c170e" AnchorPane.bottomAnchor="8.0">
          <effect>
             <InnerShadow choke="0.21" color="#2c170e" height="48.0" radius="25.25" width="55.0" />
          </effect>
