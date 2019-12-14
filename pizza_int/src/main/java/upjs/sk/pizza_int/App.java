@@ -42,6 +42,11 @@ public class App extends Application {
 		for (Order order2 : order) {
 			System.out.println(order2.toString());
 		}
+		
+		List<String> orders = DaoFactory.INSTANCE.getOrderDao().getAllForHistory();
+		for (String string : orders) {
+			System.out.println(string);
+		}
 
 		System.out.println(DaoFactory.INSTANCE.getUserDao().getUserByLogin("rico", "123"));
 

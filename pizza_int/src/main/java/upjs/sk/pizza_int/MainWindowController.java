@@ -116,7 +116,7 @@ public class MainWindowController {
 		try {
 			Parent parent = fxmlLoader.load();
 			Scene scene = new Scene(parent);
-			orderStage.setTitle("Pizza - INT");
+			orderStage.setTitle("Order");
 			orderStage.setScene(scene);
 			orderStage.show();
 		} catch (IOException e) {

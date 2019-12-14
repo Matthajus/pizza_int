@@ -146,7 +146,7 @@ public class LoginPageController {
 		try {
 			Parent parent = fxmlLoader.load();
 			Scene scene = new Scene(parent);
-			regStage.setTitle("Pizza - INT");
+			regStage.setTitle("Registration");
 			regStage.setScene(scene);
 			regStage.show();
 		} catch (IOException e) {

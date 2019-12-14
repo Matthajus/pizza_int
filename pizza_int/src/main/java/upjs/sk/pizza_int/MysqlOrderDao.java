@@ -11,9 +11,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class MysqlOrderDao implements OrderDao {
 
-private JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 	
 	public MysqlOrderDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
@@ -73,4 +76,38 @@ private JdbcTemplate jdbcTemplate;
 			}
 		
 	}
+		
+		// metoda na ziskanie vsetkych objednavok z databazy ...
+		public ObservableList<String> getAllForHistory() {
+			String sql = "SELECT " + 
+						 "o.idOrder, o.Date, o.Address, p.Name, u.Name, u.Surname " + 
+						 "FROM " + 
+						 "pizza_int.order o " + 
+						 "JOIN " + 
+						 "pizza_int.pizzalist p ON o.PizzaList_idPizzaList = p.idPizzaList " + 
+						 "JOIN " + 
+						 "pizza_int.users u ON o.Users_idUsers = u.idUsers " + 
+						 "ORDER BY idOrder;";
+			// postupne prechadzame databazou a ukladame objednavku do listu, ktory na konci vratime
+			ObservableList<String> order = jdbcTemplate.query(sql, new ResultSetExtractor<ObservableList<String>>() {
+
+				public ObservableList<String> extractData(ResultSet rs) throws SQLException, DataAccessException {
+					ObservableList<String> result = FXCollections.observableArrayList();
+					
+					while (rs.next()) {
+						String oneOrder = "";
+						oneOrder += rs.getLong("o.idOrder") + "		";
+						oneOrder += rs.getDate("o.Date") + " ";
+						oneOrder += rs.getString("o.Address") + " ";
+						oneOrder += rs.getString("p.Name") + " ";
+						oneOrder += rs.getString("u.Name") + " ";
+						oneOrder += rs.getString("u.Surname") + " " ;
+						result.add(oneOrder);
+					}
+					return result;
+				}
+
+			});
+			return order;
+		}
 }
