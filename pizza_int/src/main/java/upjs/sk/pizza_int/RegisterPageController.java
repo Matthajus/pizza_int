@@ -40,7 +40,7 @@ public class RegisterPageController {
 
 			public void handle(ActionEvent event) {
 				System.out.println("funguje to");
-				App.stage.close();
+				LoginPageController.regStage.getScene().getWindow().hide();
 			}
 		});
 

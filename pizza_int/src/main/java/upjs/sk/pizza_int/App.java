@@ -46,6 +46,8 @@ public class App extends Application {
 		System.out.println(DaoFactory.INSTANCE.getUserDao().getUserByLogin("rico", "123"));
 
 		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getById(3));
+		System.out.println("pizza podla mena");
+		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getByName("Pizza INT"));
 
 		launch(args);
 

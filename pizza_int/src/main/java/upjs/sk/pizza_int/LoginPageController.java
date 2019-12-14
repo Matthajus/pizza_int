@@ -14,9 +14,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class LoginPageController {
 
+	public static Stage regStage = new Stage();
+	
 	@FXML
 	private TextField loginTextField;
 
@@ -33,27 +36,27 @@ public class LoginPageController {
 	void initialize() {
 		System.out.println("LoginPage funguje!");
 		
-		loginTextField.textProperty().addListener(new ChangeListener<String>() {
-
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (newValue != null && newValue.trim().length() > 0) {
-					loginButton.setDisable(false);
-				} else {
-					loginButton.setDisable(true);
-				}
-			}
-		});
-
-		passwordPasswordField.textProperty().addListener(new ChangeListener<String>() {
-
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (newValue != null && newValue.trim().length() > 0) {
-					loginButton.setDisable(false);
-				} else {
-					loginButton.setDisable(true);
-				}
-			}
-		});
+//		loginTextField.textProperty().addListener(new ChangeListener<String>() {
+//
+//			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+//				if (newValue != null && newValue.trim().length() > 0) {
+//					loginButton.setDisable(false);
+//				} else {
+//					loginButton.setDisable(true);
+//				}
+//			}
+//		});
+//
+//		passwordPasswordField.textProperty().addListener(new ChangeListener<String>() {
+//
+//			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+//				if (newValue != null && newValue.trim().length() > 0) {
+//					loginButton.setDisable(false);
+//				} else {
+//					loginButton.setDisable(true);
+//				}
+//			}
+//		});
 		
 		// klik na login button
 		loginButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -143,13 +146,15 @@ public class LoginPageController {
 		try {
 			Parent parent = fxmlLoader.load();
 			Scene scene = new Scene(parent);
-			App.stage.setScene(scene);
-			App.stage.show();
+			regStage.setTitle("Pizza - INT");
+			regStage.setScene(scene);
+			regStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
+	
 
 }

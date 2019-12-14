@@ -77,9 +77,7 @@ public class Pizza {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
 		return "Pizza [id=" + id + ", name=" + name + ", description=" + description + ", weight=" + weight

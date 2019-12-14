@@ -52,6 +52,7 @@ public class MysqlPizzaDao implements PizzaDao {
 		return null;
 	}
 
+	// z databazy si vyberieme pizzu, ktorej prislucha dane id
 	public Pizza getById(long pizzaId) {
 		String sql = "SELECT * FROM pizzalist WHERE idPizzaList = ?;";
 
@@ -59,6 +60,34 @@ public class MysqlPizzaDao implements PizzaDao {
 			// ak sme nasli taku pizzu, ktora ma prislusne id-cko, tak ju
 			// nasetujeme a vratime ju (otaznik v selecte sa nizssie nahradi id)
 			Pizza pizza = jdbcTemplate.queryForObject(sql, new Object[] { pizzaId }, new RowMapper<Pizza>() {
+
+				public Pizza mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Pizza pizza = new Pizza();
+					pizza.setId(rs.getLong("idPizzaList"));
+					pizza.setName(rs.getString("Name"));
+					pizza.setDescription(rs.getString("Description"));
+					pizza.setWeight(rs.getInt("Weight"));
+					pizza.setWeightType(rs.getString("WeightType"));
+					pizza.setPrice(rs.getDouble("Price"));
+					pizza.setCurrency(rs.getString("Currency"));
+					return pizza;
+				}
+			});
+			return pizza;
+		} catch (EmptyResultDataAccessException e) {
+			// ak sa taka pizza nenachadza vratime null
+			return null;
+		}
+	}
+	
+	// za databazy vyberieme pizzu ktorej prislucha dane meno
+	public Pizza getByName(String pizzaName) {
+		String sql = "SELECT * FROM pizzalist WHERE Name = ?;";
+
+		try {
+			// ak sme nasli taku pizzu, ktora ma prislusne meno, tak ju
+			// nasetujeme a vratime ju (otaznik v selecte nizssie nahradi meno)
+			Pizza pizza = jdbcTemplate.queryForObject(sql, new Object[] { pizzaName }, new RowMapper<Pizza>() {
 
 				public Pizza mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Pizza pizza = new Pizza();
