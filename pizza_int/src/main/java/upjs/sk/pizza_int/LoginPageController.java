@@ -17,6 +17,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class LoginPageController {
+	
+	public static User loggedUser;
 
 	public static Stage regStage = new Stage();
 	
@@ -85,7 +87,8 @@ public class LoginPageController {
 		String password = passwordPasswordField.getText();
 
 		User user = DaoFactory.INSTANCE.getUserDao().getUserByLogin(login, password);
-
+		loggedUser = user;
+		
 		if (user == null) {
 			System.out.println("User not found");
 			Alert alert = new Alert(AlertType.ERROR);

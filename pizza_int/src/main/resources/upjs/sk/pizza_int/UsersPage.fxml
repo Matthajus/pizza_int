@@ -15,7 +15,7 @@
             <Image url="@Background.jpg" />
          </image>
       </ImageView>
-      <ListView layoutX="21.0" layoutY="86.0" opacity="0.6" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0">
+      <ListView fx:id="usersListView" layoutX="21.0" layoutY="86.0" opacity="0.6" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0">
          <effect>
             <InnerShadow choke="0.21" color="#2c170e" height="43.0" radius="21.5" width="45.0" />
          </effect>

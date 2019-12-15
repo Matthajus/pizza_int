@@ -53,6 +53,14 @@ public class App extends Application {
 		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getById(3));
 		System.out.println("pizza podla mena");
 		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getByName("Pizza INT"));
+		
+		System.out.println("***********************************************************");
+		
+		UsersPageController controller = new UsersPageController();
+		controller.getAllUsers(DaoFactory.INSTANCE.getUserDao().getAll());
+		
+		
+		//SendMail.send();
 
 		launch(args);
 

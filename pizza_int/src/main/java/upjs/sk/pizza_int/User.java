@@ -11,7 +11,7 @@ public class User {
 	private String login;
 	private String password;
 	private String email;
-	private int telNumber;
+	private String telNumber;
 	private String isicCardNumber;
 	private int role;
 	private List<User> userList = new ArrayList<User>();
@@ -64,11 +64,11 @@ public class User {
 		this.email = email;
 	}
 
-	public int getTel_number() {
+	public String getTel_number() {
 		return telNumber;
 	}
 
-	public void setTel_number(int tel_number) {
+	public void setTel_number(String tel_number) {
 		this.telNumber = tel_number;
 	}
 
@@ -98,9 +98,11 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", login=" + login + ", password="
-				+ password + ", email=" + email + ", tel_number=" + telNumber + ", isicCardNumber=" + isicCardNumber
-				+ ", role=" + role + "]";
+		return id + ", name=" + name + ", surname=" + surname + ", login=" + login + ", password="
+				+ password + ", email=" + email + ", telNumber=" + telNumber + ", isicCardNumber=" + isicCardNumber
+				+ ", role=" + role;
 	}
+
+
 
 }

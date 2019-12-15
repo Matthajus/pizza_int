@@ -26,7 +26,9 @@ import javafx.util.Callback;
 public class MainAdminPageController {
 
 	public static Stage historyStage = new Stage();
-	
+	public static Stage usersStage = new Stage();
+	public static Stage addStage = new Stage();
+
 	@FXML
 	private TableView<Pizza> pizzaListTableView;
 
@@ -40,7 +42,7 @@ public class MainAdminPageController {
 	private Menu pizzaListMenu;
 
 	@FXML
-	private MenuItem addEditPizzaMenuItem;
+	private MenuItem addPizzaMenuItem;
 
 	@FXML
 	private Menu userListMenu;
@@ -57,6 +59,12 @@ public class MainAdminPageController {
 	@FXML
 	void initialize() {
 		System.out.println("Hlavna strana pre admina funguje");
+
+		if (LoginPageController.loggedUser.getRole() != 1) {
+			usersMenuItem.setDisable(true);
+		} else {
+			usersMenuItem.setDisable(false);
+		}
 
 		// vyplnanie pizzaListTableView
 		List<Pizza> result = new ArrayList<Pizza>();
@@ -123,10 +131,22 @@ public class MainAdminPageController {
 				}
 			}
 		});
-		
+
 		historyMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-			    openHistoryPage();
+				openHistoryPage();
+			}
+		});
+
+		usersMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				openUsersPage();
+			}
+		});
+
+		addPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				openAddPage();
 			}
 		});
 
@@ -150,7 +170,7 @@ public class MainAdminPageController {
 		}
 
 	}
-	
+
 	// pomocna metoda pre otvorenie okna, kde admin bude vidiet historiu objednavok
 	private void openHistoryPage() {
 		HistoryPageController controller = new HistoryPageController();
@@ -162,6 +182,45 @@ public class MainAdminPageController {
 			historyStage.setTitle("History");
 			historyStage.setScene(scene);
 			historyStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// pomocna metoda pre otvorenie okna, kde hlavny admin (root) bude vidiet
+	// vsetkych uzivatelov
+	// a bude moct niekoho povysit na admina alebo mu odobrat tuto funkciu
+	private void openUsersPage() {
+		UsersPageController controller = new UsersPageController();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UsersPage.fxml"));
+		fxmlLoader.setController(controller);
+		try {
+			Parent parent = fxmlLoader.load();
+			Scene scene = new Scene(parent);
+			usersStage.setTitle("Users");
+			usersStage.setScene(scene);
+			usersStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// pomocna metoda pre otvorenie okna, kde admini budu moct pridavat pizze do
+	// zoznamu
+	private void openAddPage() {
+		AddPageController controller = new AddPageController();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddPage.fxml"));
+		fxmlLoader.setController(controller);
+		try {
+			Parent parent = fxmlLoader.load();
+			Scene scene = new Scene(parent);
+			addStage.setTitle("Add pizza");
+			addStage.setScene(scene);
+			addStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

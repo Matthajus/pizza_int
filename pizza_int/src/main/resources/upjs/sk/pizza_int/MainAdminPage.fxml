@@ -35,7 +35,7 @@
         <menus>
           <Menu fx:id="pizzaListMenu" mnemonicParsing="false" style="-fx-background-color: #e9d49e;" text="Pizza List">
             <items>
-                  <MenuItem fx:id="addEditPizzaMenuItem" mnemonicParsing="false" text="Add-Edit pizza" />
+                  <MenuItem fx:id="addPizzaMenuItem" mnemonicParsing="false" text="Add pizza" />
             </items>
           </Menu>
           <Menu fx:id="userListMenu" mnemonicParsing="false" style="-fx-background-color: #e9d49e;" text="Users List">

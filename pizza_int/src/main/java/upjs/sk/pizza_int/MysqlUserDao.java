@@ -23,7 +23,7 @@ public class MysqlUserDao implements UserDao {
 
 	// metoda na ziskanie vsetkych userov z databazy
 	public List<User> getAll() {
-		String sql = "SELECT idUsers, Name, Surname, Login, Password, Email, Tel_number, IsicCardNumber FROM users ORDER BY idUsers;";
+		String sql = "SELECT idUsers, Name, Surname, Login, Password, Email, Tel_number, IsicCardNumber, Role FROM users ORDER BY idUsers;";
 		// postupne prechadzame databazou a ukladame userov do listu, ktory na konci vratime
 		List<User> users = jdbcTemplate.query(sql, new ResultSetExtractor<List<User>>() {
 
@@ -38,8 +38,9 @@ public class MysqlUserDao implements UserDao {
 					user.setLogin(rs.getString("Login"));
 					user.setPassword(rs.getString("Password"));
 					user.setEmail(rs.getString("Email"));
-					user.setTel_number(rs.getInt("Tel_number"));
+					user.setTel_number(rs.getString("Tel_number"));
 					user.setIsicCardNumber(rs.getString("IsicCardNumber"));
+					user.setRole(rs.getInt("Role"));
 					result.add(user);
 				}
 				return result;
@@ -66,7 +67,7 @@ public class MysqlUserDao implements UserDao {
 					user.setLogin(rs.getString("Login"));
 					user.setPassword(rs.getString("Password"));
 					user.setEmail(rs.getString("Email"));
-					user.setTel_number(rs.getInt("Tel_number"));
+					user.setTel_number(rs.getString("Tel_number"));
 					user.setIsicCardNumber(rs.getString("IsicCardNumber"));
 					user.setRole(rs.getInt("Role"));
 					return user;
