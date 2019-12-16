@@ -59,8 +59,6 @@ public class App extends Application {
 		UsersPageController controller = new UsersPageController();
 		controller.getAllUsers(DaoFactory.INSTANCE.getUserDao().getAll());
 		
-		
-		SendMail.send();
 
 		launch(args);
 

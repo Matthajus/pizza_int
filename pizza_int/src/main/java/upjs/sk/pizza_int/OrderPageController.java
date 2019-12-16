@@ -71,6 +71,7 @@ public class OrderPageController {
 				System.out.println("potvrdený nákup");
 				// ... treba doplnit zaspi do databazy
 				// ... odosielanie mailu
+				SendMail.send();
 				MainWindowController.orderStage.getScene().getWindow().hide();
 			}
 		});
@@ -83,5 +84,19 @@ public class OrderPageController {
 			price += pizza.getPrice();
 		}
 		return price;
+	}
+	
+	public static String orderToString() {
+		String result ="";
+		for (Pizza pizza : MainWindowController.myOrder) {
+			result += pizza.getName() + " -> " + pizza.getDescription() + " " + pizza.getWeight() + pizza.getWeightType() + "\n";
+		}
+		double price = 0;
+		for (Pizza pizza : MainWindowController.myOrder) {
+			System.out.println(pizza.getPrice());
+			price += pizza.getPrice();
+		}
+		result += "Total price: " + price + " euro";
+		return result;
 	}
 }

@@ -1,8 +1,6 @@
 package upjs.sk.pizza_int;
 
 import java.io.IOException;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,28 +35,6 @@ public class LoginPageController {
 	@FXML
 	void initialize() {
 		System.out.println("LoginPage funguje!");
-		
-//		loginTextField.textProperty().addListener(new ChangeListener<String>() {
-//
-//			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-//				if (newValue != null && newValue.trim().length() > 0) {
-//					loginButton.setDisable(false);
-//				} else {
-//					loginButton.setDisable(true);
-//				}
-//			}
-//		});
-//
-//		passwordPasswordField.textProperty().addListener(new ChangeListener<String>() {
-//
-//			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-//				if (newValue != null && newValue.trim().length() > 0) {
-//					loginButton.setDisable(false);
-//				} else {
-//					loginButton.setDisable(true);
-//				}
-//			}
-//		});
 		
 		// klik na login button
 		loginButton.setOnAction(new EventHandler<ActionEvent>() {
