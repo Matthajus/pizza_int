@@ -60,7 +60,7 @@ public class App extends Application {
 		controller.getAllUsers(DaoFactory.INSTANCE.getUserDao().getAll());
 		
 		
-		//SendMail.send();
+		SendMail.send();
 
 		launch(args);
 
