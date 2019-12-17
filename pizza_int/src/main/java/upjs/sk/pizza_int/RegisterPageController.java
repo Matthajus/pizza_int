@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import upjs.sk.pizza_int.Dao.DaoFactory;
+import upjs.sk.pizza_int.Models.User;
 
 public class RegisterPageController {
 
@@ -57,8 +59,8 @@ public class RegisterPageController {
 				if (user == null) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Registration");
-					alert.setContentText("Wrong registration data!");
-					alert.setHeaderText("Please, fill the registration data to finish registration!");
+					alert.setContentText("Please, fill the registration data to finish registration!");
+					alert.setHeaderText("Wrong registration data!");
 					alert.show();
 				} else {
 					LoginPageController.regStage.getScene().getWindow().hide();

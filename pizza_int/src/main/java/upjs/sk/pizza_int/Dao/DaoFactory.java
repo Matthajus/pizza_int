@@ -1,4 +1,4 @@
-package upjs.sk.pizza_int;
+package upjs.sk.pizza_int.Dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

@@ -23,6 +23,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import upjs.sk.pizza_int.Dao.DaoFactory;
+import upjs.sk.pizza_int.Models.Pizza;
 
 public class MainAdminPageController {
 
@@ -220,9 +222,8 @@ public class MainAdminPageController {
 		try {
 			Parent parent = fxmlLoader.load();
 			Scene scene = new Scene(parent);
-			addStage.setTitle("Add pizza");
-			addStage.setScene(scene);
-			addStage.show();
+			App.stage.setScene(scene);
+			App.stage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

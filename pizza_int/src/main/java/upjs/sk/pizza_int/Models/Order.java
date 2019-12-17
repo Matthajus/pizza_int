@@ -1,7 +1,6 @@
-package upjs.sk.pizza_int;
+package upjs.sk.pizza_int.Models;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 public class Order {
 

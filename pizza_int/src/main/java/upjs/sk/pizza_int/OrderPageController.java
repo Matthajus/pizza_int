@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import upjs.sk.pizza_int.Models.Pizza;
 
 public class OrderPageController {
 
@@ -70,6 +71,7 @@ public class OrderPageController {
 			public void handle(ActionEvent event) {
 				System.out.println("potvrdený nákup");
 				// ... treba doplnit zaspi do databazy
+				
 				// ... odosielanie mailu
 				SendMail.send();
 				MainWindowController.orderStage.getScene().getWindow().hide();

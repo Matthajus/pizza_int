@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import upjs.sk.pizza_int.Dao.DaoFactory;
+import upjs.sk.pizza_int.Models.User;
 
 public class LoginPageController {
 	

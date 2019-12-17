@@ -1,7 +1,5 @@
 package upjs.sk.pizza_int;
 
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,37 +26,6 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
-		List<User> user = (DaoFactory.INSTANCE.getUserDao().getAll());
-		for (User user2 : user) {
-			System.out.println(user2.toString());
-		}
-
-		List<Pizza> pizza = DaoFactory.INSTANCE.getPizzaDao().getAll();
-		for (Pizza pizza2 : pizza) {
-			System.out.println(pizza2.toString());
-		}
-
-		List<Order> order = DaoFactory.INSTANCE.getOrderDao().getAll();
-		for (Order order2 : order) {
-			System.out.println(order2.toString());
-		}
-		
-		List<String> orders = DaoFactory.INSTANCE.getOrderDao().getAllForHistory();
-		for (String string : orders) {
-			System.out.println(string);
-		}
-
-		System.out.println(DaoFactory.INSTANCE.getUserDao().getUserByLogin("rico", "123"));
-
-		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getById(3));
-		System.out.println("pizza podla mena");
-		System.out.println(DaoFactory.INSTANCE.getPizzaDao().getByName("Pizza INT"));
-		
-		System.out.println("***********************************************************");
-		
-		UsersPageController controller = new UsersPageController();
-		controller.getAllUsers(DaoFactory.INSTANCE.getUserDao().getAll());
-		
 
 		launch(args);
 

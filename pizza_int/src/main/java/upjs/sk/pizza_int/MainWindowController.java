@@ -21,6 +21,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import upjs.sk.pizza_int.Dao.DaoFactory;
+import upjs.sk.pizza_int.Models.Pizza;
 
 public class MainWindowController {
 	

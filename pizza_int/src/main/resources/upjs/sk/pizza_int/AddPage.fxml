@@ -24,7 +24,15 @@
       </TextField>
       <TextField fx:id="weightTextField" layoutX="15.0" layoutY="265.0" opacity="0.6" promptText="Weight" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="265.0" />
       <TextField fx:id="priceTextField" layoutX="15.0" layoutY="306.0" opacity="0.6" promptText="Price" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="305.0" />
-      <Button fx:id="addButton" layoutX="467.0" layoutY="318.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #e9d49e;" text="Add" textFill="#2c170e" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="35.0">
+      <Button fx:id="addButton" layoutX="340.0" layoutY="318.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #e9d49e;" text="Add" textFill="#2c170e" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="160.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.21" color="#2c170e" height="44.0" radius="21.75" width="45.0" />
+         </effect>
+      </Button>
+      <Button fx:id="backButton" layoutX="468.0" layoutY="318.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #e9d49e;" text="Back" textFill="#2c170e">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -1,4 +1,4 @@
-package upjs.sk.pizza_int;
+package upjs.sk.pizza_int.Models;
 
 import java.util.ArrayList;
 import java.util.List;
