@@ -12,8 +12,8 @@ public interface UserDao {
 	
 	User saveUser(User user);
 	
-	User promoteUser(String login);
+	User promoteUser(User user);
 	
-	User demoteUser(String login);
+	User demoteUser(User user);
 
 }

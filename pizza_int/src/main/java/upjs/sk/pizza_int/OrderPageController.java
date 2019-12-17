@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import upjs.sk.pizza_int.Dao.DaoFactory;
+import upjs.sk.pizza_int.Models.Order;
 import upjs.sk.pizza_int.Models.Pizza;
 
 public class OrderPageController {
@@ -70,9 +72,21 @@ public class OrderPageController {
 
 			public void handle(ActionEvent event) {
 				System.out.println("potvrdený nákup");
-				// ... treba doplnit zaspi do databazy
-				
-				// ... odosielanie mailu
+
+				// zaspi do databazy
+				for (Pizza pizza : MainWindowController.myOrder) {
+					Order addOrder = new Order();
+					addOrder.setAdress(addressComboBox.getValue());
+					addOrder.setIdPizza(pizza.getId());
+					addOrder.setIdUser(LoginPageController.loggedUser.getId());
+					
+					// to aby nebol vykricnik, ze sa user nikte nepouziva :D
+					@SuppressWarnings("unused")
+					Order order = DaoFactory.INSTANCE.getOrderDao().saveOrder(addOrder);
+
+				}
+
+				// odosielanie mailu
 				SendMail.send();
 				MainWindowController.orderStage.getScene().getWindow().hide();
 			}
@@ -87,11 +101,12 @@ public class OrderPageController {
 		}
 		return price;
 	}
-	
+
 	public static String orderToString() {
-		String result ="";
+		String result = "";
 		for (Pizza pizza : MainWindowController.myOrder) {
-			result += pizza.getName() + " -> " + pizza.getDescription() + " " + pizza.getWeight() + pizza.getWeightType() + "\n";
+			result += pizza.getName() + " -> " + pizza.getDescription() + " " + pizza.getWeight()
+					+ pizza.getWeightType() + "\n";
 		}
 		double price = 0;
 		for (Pizza pizza : MainWindowController.myOrder) {

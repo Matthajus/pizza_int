@@ -1,5 +1,7 @@
 package upjs.sk.pizza_int;
 
+//zdoj na double klik v tableView: https://stackoverflow.com/questions/26563390/detect-doubleclick-on-row-of-tableview-javafx
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,32 +50,32 @@ public class MainWindowController {
 
 		TableColumn<Pizza, String> currencyCol = new TableColumn<Pizza, String>("");
 		currencyCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("Currency"));
-		currencyCol.setStyle("-fx-alignment: CENTER-LEFT;");
+		currencyCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		pizzaListTableView.getColumns().add(currencyCol);
 
 		TableColumn<Pizza, Double> priceCol = new TableColumn<Pizza, Double>("Price");
 		priceCol.setCellValueFactory(new PropertyValueFactory<Pizza, Double>("Price"));
-		priceCol.setStyle("-fx-alignment: CENTER-LEFT;");
+		priceCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		pizzaListTableView.getColumns().add(priceCol);
 
 		TableColumn<Pizza, String> weightTypeCol = new TableColumn<Pizza, String>("");
 		weightTypeCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("WeightType"));
-		weightTypeCol.setStyle("-fx-alignment: CENTER-LEFT;");
+		weightTypeCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		pizzaListTableView.getColumns().add(weightTypeCol);
 
 		TableColumn<Pizza, Integer> weightCol = new TableColumn<Pizza, Integer>("Weight");
 		weightCol.setCellValueFactory(new PropertyValueFactory<Pizza, Integer>("Weight"));
-		weightCol.setStyle("-fx-alignment: CENTER-LEFT;");
+		weightCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		pizzaListTableView.getColumns().add(weightCol);
 
 		TableColumn<Pizza, String> descriptionCol = new TableColumn<Pizza, String>("Description");
 		descriptionCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("Description"));
-		descriptionCol.setStyle("-fx-alignment: CENTER-LEFT;");
+		descriptionCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		pizzaListTableView.getColumns().add(descriptionCol);
 
 		TableColumn<Pizza, String> nameCol = new TableColumn<Pizza, String>("Name");
 		nameCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("name"));
-		nameCol.setStyle("-fx-alignment: CENTER-LEFT;");
+		nameCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		pizzaListTableView.getColumns().add(nameCol);
 		
 		// dvojklikom si vyberieme pizzu a ulozime do listu

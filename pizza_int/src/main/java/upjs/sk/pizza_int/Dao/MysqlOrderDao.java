@@ -2,14 +2,10 @@ package upjs.sk.pizza_int.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import upjs.sk.pizza_int.Interfaces.OrderDao;
@@ -22,29 +18,13 @@ public class MysqlOrderDao implements OrderDao {
 	public MysqlOrderDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	
+
 	@Override
 	public Order saveOrder(Order order) {
-		if (order.getDate() == null || order.getAdress().length() == 0 || order.getIdPizza() == 0
-				|| order.getIdUser() == 0) {
-			return null;
-		}
 
-		if (order.getId() == null) {
-			SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-			simpleJdbcInsert.withTableName("order");
-			simpleJdbcInsert.usingColumns("Date", "Address", "PizzaList_idPizzaList", "Users_idUsers");
-			simpleJdbcInsert.usingGeneratedKeyColumns("idOrder");
-
-			Map<String, Object> values = new HashMap<String, Object>();
-			values.put("Date", order.getDate());
-			values.put("Address", order.getAdress());
-			values.put("PizzaList_idPizzaList", order.getIdPizza());
-			values.put("Users_idUsers", order.getIdUser());
-
-			long id = simpleJdbcInsert.executeAndReturnKey(values).longValue();
-			order.setId(id);
-		}
+		String sql = "INSERT INTO `pizza_int`.`order` (`Date`, `Address`, `PizzaList_idPizzaList`, `Users_idUsers`) VALUES (current_timestamp(), '"
+				+ order.getAdress() + "', '" + order.getIdPizza() + "', '" + order.getIdUser() + "');";
+		jdbcTemplate.update(sql);
 
 		return order;
 	}

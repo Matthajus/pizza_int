@@ -130,13 +130,21 @@ public class MysqlUserDao implements UserDao {
 	}
 	
 	@Override
-	public User promoteUser(String login) {
-		return null;
+	public User promoteUser(User user) {
+		
+		String sql = "UPDATE `pizza_int`.`users` SET `Role` = '2' WHERE (`Login` = '" + user.getLogin() + "');";
+		jdbcTemplate.update(sql);
+		
+		return user;
 	}
 
 	@Override
-	public User demoteUser(String login) {
-		return null;
+	public User demoteUser(User user) {
+		
+		String sql = "UPDATE `pizza_int`.`users` SET `Role` = '3' WHERE (`Login` = '" + user.getLogin() + "');";
+		jdbcTemplate.update(sql);
+		
+		return user;
 	}
 
 }

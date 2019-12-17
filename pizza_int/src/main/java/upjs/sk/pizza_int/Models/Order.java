@@ -1,6 +1,6 @@
 package upjs.sk.pizza_int.Models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Order {
 
