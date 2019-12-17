@@ -53,9 +53,9 @@ public class RegisterPageController {
 				regingUser.setEmail(EmailAddressTextField.getText());
 				regingUser.setIsicCardNumber(IsicCardNumberTextField.getText());
 				regingUser.setTel_number(TelephoneNumberTextField.getText());
-				
+
 				User user = DaoFactory.INSTANCE.getUserDao().saveUser(regingUser);
-				
+
 				if (user == null) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Registration");
@@ -65,8 +65,6 @@ public class RegisterPageController {
 				} else {
 					LoginPageController.regStage.getScene().getWindow().hide();
 				}
-
-				
 
 			}
 		});

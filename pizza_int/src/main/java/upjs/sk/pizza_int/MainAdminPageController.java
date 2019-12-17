@@ -49,6 +49,9 @@ public class MainAdminPageController {
 	private MenuItem addPizzaMenuItem;
 
 	@FXML
+	private MenuItem editPizzaMenuItem;
+
+	@FXML
 	private Menu userListMenu;
 
 	@FXML
@@ -114,18 +117,18 @@ public class MainAdminPageController {
 				row.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					public void handle(MouseEvent event) {
 						if (event.getClickCount() == 2 && (!row.isEmpty())) {
-							//event.MOUSE_CLICKED.
+							// event.MOUSE_CLICKED.
 							Pizza rowData = DaoFactory.INSTANCE.getPizzaDao().getByName(row.getItem().getName());
 							System.out.println("klikol som na riadok" + " " + rowData.toString());
 							MainWindowController.myOrder.add(rowData);
-							new Alert(Alert.AlertType.INFORMATION, "You added pizza into your order: " + rowData.getName()).showAndWait();
+							new Alert(Alert.AlertType.INFORMATION,
+									"You added pizza into your order: " + rowData.getName()).showAndWait();
 						}
 					}
 				});
 				return row;
 			}
 		});
-		
 
 		// klik na order button
 		orderButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -151,11 +154,19 @@ public class MainAdminPageController {
 			}
 		});
 
+		editPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				openEditPizzaPage();
+			}
+		});
+		
 		addPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				openAddPage();
 			}
 		});
+		
+		
 
 	}
 
@@ -221,6 +232,23 @@ public class MainAdminPageController {
 	private void openAddPage() {
 		AddPageController controller = new AddPageController();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddPage.fxml"));
+		fxmlLoader.setController(controller);
+		try {
+			Parent parent = fxmlLoader.load();
+			Scene scene = new Scene(parent);
+			App.stage.setScene(scene);
+			App.stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// pomocna metoda pre otvorenie okna, kde admini budu moct editovat pizze
+	private void openEditPizzaPage() {
+		AddPageController controller = new AddPageController();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditPizzaPage.fxml"));
 		fxmlLoader.setController(controller);
 		try {
 			Parent parent = fxmlLoader.load();

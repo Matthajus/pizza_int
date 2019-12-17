@@ -33,11 +33,16 @@
       </Button>
       <MenuBar fx:id="upperMenuBar" layoutY="2.0" style="-fx-background-color: #e8d1a5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
-          <Menu fx:id="pizzaListMenu" mnemonicParsing="false" style="-fx-background-color: #e9d49e;" text="Pizza List">
+          <Menu fx:id="pizzaListMenu" mnemonicParsing="false" style="-fx-background-color: #e9d49e;" text="Add pizza">
             <items>
                   <MenuItem fx:id="addPizzaMenuItem" mnemonicParsing="false" text="Add pizza" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Edit pizza">
+              <items>
+                <MenuItem fx:id="editPizzaMenuItem" mnemonicParsing="false" text="Edit pizza" />
+              </items>
+            </Menu>
           <Menu fx:id="userListMenu" mnemonicParsing="false" style="-fx-background-color: #e9d49e;" text="Users List">
             <items>
               <MenuItem fx:id="usersMenuItem" mnemonicParsing="false" text="Users" />

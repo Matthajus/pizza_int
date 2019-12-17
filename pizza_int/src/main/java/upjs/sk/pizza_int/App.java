@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import upjs.sk.pizza_int.Dao.DaoFactory;
-import upjs.sk.pizza_int.Models.User;
 
 public class App extends Application {
 
