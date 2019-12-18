@@ -62,6 +62,12 @@ public class MainAdminPageController {
 
 	@FXML
 	private MenuItem historyMenuItem;
+	
+
+//    @FXML
+//    void openEdit(ActionEvent event) {
+//    	openEditPizzaPage();
+//    }
 
 	@FXML
 	void initialize() {
@@ -82,32 +88,32 @@ public class MainAdminPageController {
 
 		TableColumn<Pizza, String> currencyCol = new TableColumn<Pizza, String>("");
 		currencyCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("Currency"));
-		currencyCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		currencyCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(currencyCol);
 
 		TableColumn<Pizza, Double> priceCol = new TableColumn<Pizza, Double>("Price");
 		priceCol.setCellValueFactory(new PropertyValueFactory<Pizza, Double>("Price"));
-		priceCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		priceCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(priceCol);
 
 		TableColumn<Pizza, String> weightTypeCol = new TableColumn<Pizza, String>("");
 		weightTypeCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("WeightType"));
-		weightTypeCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		weightTypeCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(weightTypeCol);
 
 		TableColumn<Pizza, Integer> weightCol = new TableColumn<Pizza, Integer>("Weight");
 		weightCol.setCellValueFactory(new PropertyValueFactory<Pizza, Integer>("Weight"));
-		weightCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		weightCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(weightCol);
 
 		TableColumn<Pizza, String> descriptionCol = new TableColumn<Pizza, String>("Description");
 		descriptionCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("Description"));
-		descriptionCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		descriptionCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(descriptionCol);
 
 		TableColumn<Pizza, String> nameCol = new TableColumn<Pizza, String>("Name");
 		nameCol.setCellValueFactory(new PropertyValueFactory<Pizza, String>("name"));
-		nameCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		nameCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(nameCol);
 
 		// dvojklikom si vyberieme pizzu a ulozime do listu
@@ -154,19 +160,17 @@ public class MainAdminPageController {
 			}
 		});
 
-		editPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				openEditPizzaPage();
-			}
-		});
-		
 		addPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				openAddPage();
 			}
 		});
 		
-		
+		editPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				openEditPizzaPage();
+			}
+		});
 
 	}
 
@@ -247,7 +251,7 @@ public class MainAdminPageController {
 
 	// pomocna metoda pre otvorenie okna, kde admini budu moct editovat pizze
 	private void openEditPizzaPage() {
-		AddPageController controller = new AddPageController();
+		EditPizzaPageController controller = new EditPizzaPageController();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditPizzaPage.fxml"));
 		fxmlLoader.setController(controller);
 		try {

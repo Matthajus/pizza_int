@@ -2,6 +2,7 @@ package upjs.sk.pizza_int;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -38,6 +39,7 @@ public class OrderPageController {
 
 		// order list vyplnime pizzami ktore sme si zvolili
 		ordersListView.setItems(MainWindowController.myOrder);
+		ordersListView.setStyle("-fx-font-weight: bold;" + "");
 
 		// do comboBoxu vlozime hodnoty /intraky kde budeme dovazat pizzu
 		addressComboBox.getItems().addAll("Medická 6", "Medická 4", "Popradská 76", "Popradská 66");
@@ -79,7 +81,7 @@ public class OrderPageController {
 					addOrder.setAdress(addressComboBox.getValue());
 					addOrder.setIdPizza(pizza.getId());
 					addOrder.setIdUser(LoginPageController.loggedUser.getId());
-					
+
 					// to aby nebol vykricnik, ze sa user nikte nepouziva :D
 					@SuppressWarnings("unused")
 					Order order = DaoFactory.INSTANCE.getOrderDao().saveOrder(addOrder);
@@ -88,6 +90,10 @@ public class OrderPageController {
 
 				// odosielanie mailu
 				SendMail.send();
+				
+				// vyprazdni objednavku
+				MainWindowController.myOrder = FXCollections.observableArrayList();
+				
 				MainWindowController.orderStage.getScene().getWindow().hide();
 			}
 		});

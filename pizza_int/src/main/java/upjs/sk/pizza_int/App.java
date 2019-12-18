@@ -18,6 +18,7 @@ public class App extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
 		fxmlLoader.setController(controller);
 		Parent parent = fxmlLoader.load();
+		parent.setStyle("-fx-background-image: url('C:\\Users\\tusma\\git\\paz1c_pizza_int\\pizza_int\\src\\main\\resources\\upjs\\sk\\pizza_int\\Background.jpg'); -fx-background-size: 100% 100%; ");
 		Scene scene = new Scene(parent);
 		stage.setTitle("Pizza - INT");
 		stage.setScene(scene);

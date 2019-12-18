@@ -14,6 +14,7 @@ public class HistoryPageController {
         System.out.println("História objednávok sa zobrazila!");
         
         ordersListView.setItems(DaoFactory.INSTANCE.getOrderDao().getAllForHistory());
+        ordersListView.setStyle("-fx-font-weight: bold;");
         
     }
 }

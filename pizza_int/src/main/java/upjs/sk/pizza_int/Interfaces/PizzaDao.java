@@ -12,4 +12,6 @@ public interface PizzaDao {
 	
 	Pizza getByName(String pizzaName);
 
+	Pizza editPizza(Pizza pizza);
+
 }

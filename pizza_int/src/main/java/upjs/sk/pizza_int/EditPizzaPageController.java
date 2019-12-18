@@ -3,6 +3,8 @@ package upjs.sk.pizza_int;
 import java.io.IOException;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +18,8 @@ import upjs.sk.pizza_int.Dao.DaoFactory;
 import upjs.sk.pizza_int.Models.Pizza;
 
 public class EditPizzaPageController {
+
+	public static Pizza selectedPizza = null;
 
 	@FXML
 	private TextField pizzaNameTextField;
@@ -40,20 +44,57 @@ public class EditPizzaPageController {
 
 	@FXML
 	void initialize() {
-		
+		System.out.println("Edit pizze");
+
 		List<Pizza> pizzaList = DaoFactory.INSTANCE.getPizzaDao().getAll();
 		int counter = 0;
 		for (Pizza pizza : pizzaList) {
-			pizzaComboBox.getItems().add(counter, pizza.getName());
+			pizzaComboBox.getItems().add(counter, pizza.getName() + "");
 			counter++;
 		}
-		
-		
+
+		pizzaComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				// TODO Auto-generated method stub
+				for (Pizza pizza : pizzaList) {
+					if (pizza.getName().equals(pizzaComboBox.getSelectionModel().getSelectedItem())) {
+						pizzaNameTextField.setText(pizza.getName());
+						descriptionTextField.setText(pizza.getDescription());
+						weightTextField.setText(pizza.getWeight() + "");
+						priceTextField.setText(pizza.getPrice() + "");
+
+						selectedPizza = pizza;
+					}
+				}
+
+			}
+		});
+
+		// klik na edit button
+		editButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				System.out.println("Editujem!");
+				Pizza editedPizza = new Pizza();
+				editedPizza.setName(pizzaNameTextField.getText());
+				editedPizza.setDescription(descriptionTextField.getText());
+				editedPizza.setWeight(Integer.parseInt(weightTextField.getText()));
+				editedPizza.setPrice(Double.parseDouble(priceTextField.getText()));
+
+				@SuppressWarnings("unused")
+				Pizza pizza = DaoFactory.INSTANCE.getPizzaDao().editPizza(editedPizza);
+				openMainAdminPage();
+
+			}
+		});
+
 		// klik na back button
 		backButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-				System.out.println("Späť na hlavnu tránku admina!");
+				System.out.println("Späť na hlavnu stránku admina!");
 				openMainAdminPage();
 			}
 		});

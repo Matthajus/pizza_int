@@ -24,7 +24,7 @@ import upjs.sk.pizza_int.Models.User;
 
 public class UsersPageController {
 
-	public User selectedUser = new User();
+	private User selectedUser = new User();
 
 	@FXML
 	private TableView<User> usersTableView;
@@ -48,42 +48,42 @@ public class UsersPageController {
 
 		TableColumn<User, Integer> roleCol = new TableColumn<User, Integer>("Role");
 		roleCol.setCellValueFactory(new PropertyValueFactory<User, Integer>("Role"));
-		roleCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		roleCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(roleCol);
 
 		TableColumn<User, String> isicCol = new TableColumn<User, String>("Isic");
 		isicCol.setCellValueFactory(new PropertyValueFactory<User, String>("IsicCardNumber"));
-		isicCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		isicCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(isicCol);
 
 		TableColumn<User, String> telCol = new TableColumn<User, String>("Tel_number");
 		telCol.setCellValueFactory(new PropertyValueFactory<User, String>("Tel_number"));
-		telCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		telCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(telCol);
 
 		TableColumn<User, String> emailCol = new TableColumn<User, String>("Email");
 		emailCol.setCellValueFactory(new PropertyValueFactory<User, String>("Email"));
-		emailCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		emailCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(emailCol);
 
 		TableColumn<User, String> passwordCol = new TableColumn<User, String>("Password");
 		passwordCol.setCellValueFactory(new PropertyValueFactory<User, String>("Password"));
-		passwordCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		passwordCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(passwordCol);
 
 		TableColumn<User, String> loginCol = new TableColumn<User, String>("Login");
 		loginCol.setCellValueFactory(new PropertyValueFactory<User, String>("Login"));
-		loginCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		loginCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(loginCol);
 
 		TableColumn<User, String> surnameCol = new TableColumn<User, String>("Surname");
 		surnameCol.setCellValueFactory(new PropertyValueFactory<User, String>("Surname"));
-		surnameCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		surnameCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(surnameCol);
 
 		TableColumn<User, String> nameCol = new TableColumn<User, String>("Name");
 		nameCol.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
-		nameCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		nameCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		usersTableView.getColumns().add(nameCol);
 
 		// dvojklikom si vyberieme usera

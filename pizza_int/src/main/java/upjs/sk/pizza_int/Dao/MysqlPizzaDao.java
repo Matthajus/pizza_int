@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import upjs.sk.pizza_int.EditPizzaPageController;
 import upjs.sk.pizza_int.Interfaces.PizzaDao;
 import upjs.sk.pizza_int.Models.Pizza;
 
@@ -108,6 +109,19 @@ public class MysqlPizzaDao implements PizzaDao {
 			pizza.setId(id);
 		}
 
+		return pizza;
+	}
+	
+	@Override
+	public Pizza editPizza (Pizza pizza) {
+		
+		String sql = "UPDATE `pizza_int`.`pizzalist` SET "
+				+ "`Name` = '" + pizza.getName() + "', "
+				+ "`Description` = '" + pizza.getDescription() + "', "
+				+ "`Weight` = '" + pizza.getWeight() + "', `Price` = '" + pizza.getPrice() + "' "
+				+ "WHERE (`Name` = '" + EditPizzaPageController.selectedPizza.getName() + "');";
+		jdbcTemplate.update(sql);
+		
 		return pizza;
 	}
 

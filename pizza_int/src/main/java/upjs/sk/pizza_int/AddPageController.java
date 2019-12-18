@@ -66,6 +66,7 @@ public class AddPageController {
 					alert.setHeaderText("Wrong pizza data!");
 					alert.show();
 				} else {
+					System.out.println("volam open");
 					openMainAdminPage();
 					
 				}
@@ -85,6 +86,7 @@ public class AddPageController {
 	
 	// pomocna metoda pre otvorenie okna ked sa logujeme ako admin
 		private void openMainAdminPage() {
+			System.out.println("volam sa z addPage");
 			MainAdminPageController controller = new MainAdminPageController();
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainAdminPage.fxml"));
 			fxmlLoader.setController(controller);
