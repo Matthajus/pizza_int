@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -139,11 +138,4 @@ public class UsersPageController {
 
 	}
 
-	public ObservableList<String> getAllUsers(List<User> userList) {
-		ObservableList<String> result = FXCollections.observableArrayList();
-		for (User user : userList) {
-			result.add(user.toString());
-		}
-		return result;
-	}
 }

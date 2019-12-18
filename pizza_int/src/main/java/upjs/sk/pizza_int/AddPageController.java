@@ -30,9 +30,9 @@ public class AddPageController {
 
 	@FXML
 	private Button addButton;
-	
+
 	@FXML
-    private Button backButton;
+	private Button backButton;
 
 	@FXML
 	void initialize() {
@@ -56,7 +56,7 @@ public class AddPageController {
 				} else {
 					addPizza.setPrice(0);
 				}
-				
+
 				Pizza pizza = DaoFactory.INSTANCE.getPizzaDao().savePizza(addPizza);
 
 				if (pizza == null) {
@@ -68,38 +68,37 @@ public class AddPageController {
 				} else {
 					System.out.println("volam open");
 					openMainAdminPage();
-					
+
 				}
 
 			}
 		});
-		
+
 		// klik na back button
 		backButton.setOnAction(new EventHandler<ActionEvent>() {
 
-					public void handle(ActionEvent event) {
-						System.out.println("Späť na hlavnu tránku admina!");
-						openMainAdminPage();
-					}
-				});
-	}
-	
-	// pomocna metoda pre otvorenie okna ked sa logujeme ako admin
-		private void openMainAdminPage() {
-			System.out.println("volam sa z addPage");
-			MainAdminPageController controller = new MainAdminPageController();
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainAdminPage.fxml"));
-			fxmlLoader.setController(controller);
-			try {
-				Parent parent = fxmlLoader.load();
-				Scene scene = new Scene(parent);
-				App.stage.setScene(scene);
-				App.stage.show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			public void handle(ActionEvent event) {
+				System.out.println("Späť na hlavnu tránku admina!");
+				openMainAdminPage();
 			}
+		});
+	}
 
+	// pomocna metoda pre otvorenie okna ked sa logujeme ako admin
+	private void openMainAdminPage() {
+		MainAdminPageController controller = new MainAdminPageController();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainAdminPage.fxml"));
+		fxmlLoader.setController(controller);
+		try {
+			Parent parent = fxmlLoader.load();
+			Scene scene = new Scene(parent);
+			App.stage.setScene(scene);
+			App.stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
+
+	}
+
 }

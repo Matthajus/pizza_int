@@ -34,8 +34,9 @@ public class OrderPageController {
 	@FXML
 	void initialize() {
 		System.out.println("Okno objednavok sa otvorilo!");
-		// nastavime buyButton na nie stlacitelny
+		// nastavime buyButton a confirmButton na nie stlacitelny
 		buyButton.setDisable(true);
+		confirmButton.setDisable(true);
 
 		// order list vyplnime pizzami ktore sme si zvolili
 		ordersListView.setItems(MainWindowController.myOrder);
@@ -43,10 +44,10 @@ public class OrderPageController {
 
 		// do comboBoxu vlozime hodnoty /intraky kde budeme dovazat pizzu
 		addressComboBox.getItems().addAll("Medická 6", "Medická 4", "Popradská 76", "Popradská 66");
-		// zistujeme ci je vybrana hodnota v comboBoxe, defaultne nastavime
-		// confirmButton na nie stlacitelny
+		
+		// zistujeme ci je vybrana hodnota v comboBoxe
 		final boolean isMyComboBoxEmpty = addressComboBox.getSelectionModel().isEmpty();
-		confirmButton.setDisable(true);
+		
 
 		// listener na confirmButton, ak je nieco v comboBoxe vybrane, vtedy mozeme
 		// stlacit confirmButton

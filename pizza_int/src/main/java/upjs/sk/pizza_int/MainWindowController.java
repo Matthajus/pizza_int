@@ -78,7 +78,7 @@ public class MainWindowController {
 		nameCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-font-weight: bold;");
 		pizzaListTableView.getColumns().add(nameCol);
 		
-		// dvojklikom si vyberieme pizzu a ulozime do listu
+		// dvojklikom si vyberieme pizzu a ulozime do listu (stackoverflow)
 		pizzaListTableView.setRowFactory( new Callback<TableView<Pizza>, TableRow<Pizza>>() {
 			public TableRow<Pizza> call(TableView<Pizza> tv) {
 			    final TableRow<Pizza> row = new TableRow<Pizza>();
@@ -103,7 +103,7 @@ public class MainWindowController {
 		orderButton.setOnAction(new EventHandler<ActionEvent>() {
 
 					public void handle(ActionEvent event) {
-						System.out.println("idem sa registrovat");
+						System.out.println("Otvorenie objednávky");
 						openOrderPage();
 						for (Pizza pizza : myOrder) {
 						System.out.println(pizza.toString());

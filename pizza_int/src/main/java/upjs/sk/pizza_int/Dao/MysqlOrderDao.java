@@ -44,7 +44,7 @@ public class MysqlOrderDao implements OrderDao {
 
 				while (rs.next()) {
 					String oneOrder = "";
-					oneOrder += rs.getLong("o.idOrder") + "		";
+					oneOrder += rs.getLong("o.idOrder") + "	";
 					oneOrder += rs.getDate("o.Date") + " ";
 					oneOrder += rs.getString("o.Address") + " ";
 					oneOrder += rs.getString("p.Name") + " ";

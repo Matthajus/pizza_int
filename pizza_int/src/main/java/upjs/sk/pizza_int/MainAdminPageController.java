@@ -62,12 +62,6 @@ public class MainAdminPageController {
 
 	@FXML
 	private MenuItem historyMenuItem;
-	
-
-//    @FXML
-//    void openEdit(ActionEvent event) {
-//    	openEditPizzaPage();
-//    }
 
 	@FXML
 	void initialize() {
