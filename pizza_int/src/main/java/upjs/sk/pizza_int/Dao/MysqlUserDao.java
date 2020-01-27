@@ -89,7 +89,7 @@ public class MysqlUserDao implements UserDao {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public User saveUser(User user) {
 		// kontrolujeme, ci su vsetky textFieldy vyplnené
@@ -128,22 +128,34 @@ public class MysqlUserDao implements UserDao {
 
 		return user;
 	}
-	
+
 	@Override
 	public User promoteUser(User user) {
-		
+
 		String sql = "UPDATE `pizza_int`.`users` SET `Role` = '2' WHERE (`Login` = '" + user.getLogin() + "');";
 		jdbcTemplate.update(sql);
-		
+
 		return user;
 	}
 
 	@Override
 	public User demoteUser(User user) {
-		
+
 		String sql = "UPDATE `pizza_int`.`users` SET `Role` = '3' WHERE (`Login` = '" + user.getLogin() + "');";
 		jdbcTemplate.update(sql);
-		
+
+		return user;
+	}
+
+	@Override
+	public User deleteUser(User user) {
+
+		String sql = "DELETE FROM `pizza_int`.`order` WHERE (`Users_idUsers` = '" + user.getId() + "');";
+		jdbcTemplate.update(sql);
+
+		String sql2 = "DELETE FROM `pizza_int`.`users` WHERE (`idUsers` = '" + user.getId() + "');";
+		jdbcTemplate.update(sql2);
+
 		return user;
 	}
 

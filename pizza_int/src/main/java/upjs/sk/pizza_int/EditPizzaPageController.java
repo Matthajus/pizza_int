@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -38,6 +39,9 @@ public class EditPizzaPageController {
 
 	@FXML
 	private Button backButton;
+
+	@FXML
+	private Button deleteButton;
 
 	@FXML
 	private ComboBox<String> pizzaComboBox;
@@ -96,6 +100,22 @@ public class EditPizzaPageController {
 			public void handle(ActionEvent event) {
 				System.out.println("Späť na hlavnu stránku admina!");
 				openMainAdminPage();
+			}
+		});
+
+		// klik na delete button
+		deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				System.out.println("Vymazujem!");
+
+				if (selectedPizza == null) {
+					new Alert(Alert.AlertType.INFORMATION, "You have to choose pizza from ComboBox: ").showAndWait();
+				} else {
+					@SuppressWarnings("unused")
+					Pizza pizza = DaoFactory.INSTANCE.getPizzaDao().deletePizza(selectedPizza);
+					openMainAdminPage();
+				}
 			}
 		});
 	}

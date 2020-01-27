@@ -9,4 +9,6 @@ public interface OrderDao {
 	
 	ObservableList<String> getAllForHistory();
 
+	void deletOrder(int orderID);
+
 }

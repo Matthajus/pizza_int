@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import upjs.sk.pizza_int.Dao.DaoFactory;
 import upjs.sk.pizza_int.Models.Order;
 import upjs.sk.pizza_int.Models.Pizza;
@@ -44,10 +45,9 @@ public class OrderPageController {
 
 		// do comboBoxu vlozime hodnoty /intraky kde budeme dovazat pizzu
 		addressComboBox.getItems().addAll("Medická 6", "Medická 4", "Popradská 76", "Popradská 66");
-		
+
 		// zistujeme ci je vybrana hodnota v comboBoxe
 		final boolean isMyComboBoxEmpty = addressComboBox.getSelectionModel().isEmpty();
-		
 
 		// listener na confirmButton, ak je nieco v comboBoxe vybrane, vtedy mozeme
 		// stlacit confirmButton
@@ -91,13 +91,32 @@ public class OrderPageController {
 
 				// odosielanie mailu
 				SendMail.send();
-				
+
 				// vyprazdni objednavku
 				MainWindowController.myOrder = FXCollections.observableArrayList();
-				
+
 				MainWindowController.orderStage.getScene().getWindow().hide();
 			}
 		});
+
+		// dvojklikom do listView vymazeme z objednavky pizzu na ktoru sme klikli
+		ordersListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent click) {
+
+				if (click.getClickCount() == 2) {
+
+					Pizza selectedPizza = ordersListView.getSelectionModel().getSelectedItem();
+					int pizzaRank = ordersListView.getSelectionModel().getSelectedIndex();
+					System.out.println(selectedPizza.toString() + "	" + pizzaRank);
+					MainWindowController.myOrder.remove(pizzaRank);
+					ordersListView.setItems(MainWindowController.myOrder);
+					ordersListView.setStyle("-fx-font-weight: bold;" + "");
+				}
+			}
+		});
+
 	}
 
 	public double getTotalPrice() {

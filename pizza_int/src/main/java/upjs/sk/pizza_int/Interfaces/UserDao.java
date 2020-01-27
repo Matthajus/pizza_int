@@ -16,4 +16,6 @@ public interface UserDao {
 	
 	User demoteUser(User user);
 
+	User deleteUser(User user);
+
 }

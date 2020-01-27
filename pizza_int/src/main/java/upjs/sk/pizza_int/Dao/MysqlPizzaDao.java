@@ -85,7 +85,7 @@ public class MysqlPizzaDao implements PizzaDao {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public Pizza savePizza(Pizza pizza) {
 		if (pizza.getName().length() == 0 || pizza.getDescription().length() == 0 || pizza.getWeight() == 0
@@ -111,17 +111,28 @@ public class MysqlPizzaDao implements PizzaDao {
 
 		return pizza;
 	}
-	
+
 	@Override
-	public Pizza editPizza (Pizza pizza) {
-		
-		String sql = "UPDATE `pizza_int`.`pizzalist` SET "
-				+ "`Name` = '" + pizza.getName() + "', "
-				+ "`Description` = '" + pizza.getDescription() + "', "
-				+ "`Weight` = '" + pizza.getWeight() + "', `Price` = '" + pizza.getPrice() + "' "
-				+ "WHERE (`Name` = '" + EditPizzaPageController.selectedPizza.getName() + "');";
+	public Pizza editPizza(Pizza pizza) {
+
+		String sql = "UPDATE `pizza_int`.`pizzalist` SET " + "`Name` = '" + pizza.getName() + "', "
+				+ "`Description` = '" + pizza.getDescription() + "', " + "`Weight` = '" + pizza.getWeight()
+				+ "', `Price` = '" + pizza.getPrice() + "' " + "WHERE (`Name` = '"
+				+ EditPizzaPageController.selectedPizza.getName() + "');";
 		jdbcTemplate.update(sql);
-		
+
+		return pizza;
+	}
+
+	@Override
+	public Pizza deletePizza(Pizza pizza) {
+
+		String sql = "DELETE FROM `pizza_int`.`order` WHERE (`PizzaList_idPizzaList` = '" + pizza.getId() + "');";
+		jdbcTemplate.update(sql);
+
+		String sql2 = "DELETE FROM `pizza_int`.`pizzalist` WHERE (`idPizzaList` = '" + pizza.getId() + "');";
+		jdbcTemplate.update(sql2);
+
 		return pizza;
 	}
 

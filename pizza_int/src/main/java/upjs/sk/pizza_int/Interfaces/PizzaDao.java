@@ -14,4 +14,6 @@ public interface PizzaDao {
 
 	Pizza editPizza(Pizza pizza);
 
+	Pizza deletePizza(Pizza pizza);
+
 }

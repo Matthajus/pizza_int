@@ -24,6 +24,14 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Button fx:id="deleteButton" layoutX="33.0" layoutY="355.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #e9d49e;" text="Delete" textFill="#2c170e">
+         <effect>
+            <InnerShadow choke="0.21" color="#2c170e" height="48.0" radius="25.25" width="55.0" />
+         </effect>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
       <TableView fx:id="usersTableView" layoutX="18.0" layoutY="96.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.6" prefHeight="249.0" prefWidth="573.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="95.0">
          <effect>
             <InnerShadow choke="0.21" color="#2c170e" height="41.0" radius="21.0" width="45.0" />

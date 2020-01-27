@@ -58,4 +58,13 @@ public class MysqlOrderDao implements OrderDao {
 		});
 		return order;
 	}
+	
+	@Override
+	public void deletOrder(int orderID) {
+		
+		String sql = "DELETE FROM `pizza_int`.`order` WHERE (`idOrder` = " + orderID +");";
+		jdbcTemplate.update(sql);
+		
+	}
+
 }

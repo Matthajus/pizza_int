@@ -23,7 +23,7 @@ import upjs.sk.pizza_int.Models.User;
 
 public class UsersPageController {
 
-	private User selectedUser = new User();
+	private User selectedUser = null;
 
 	@FXML
 	private TableView<User> usersTableView;
@@ -33,6 +33,9 @@ public class UsersPageController {
 
 	@FXML
 	private Button promoteButton;
+
+	@FXML
+	private Button deleteButton;
 
 	@FXML
 	void initialize() {
@@ -132,6 +135,24 @@ public class UsersPageController {
 					User user = DaoFactory.INSTANCE.getUserDao().demoteUser(selectedUser);
 				}
 				MainAdminPageController.usersStage.getScene().getWindow().hide();
+
+			}
+		});
+
+		// klik na delete button
+		deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				System.out.println("User bol vymazaný!");
+
+				if (selectedUser == null) {
+					new Alert(Alert.AlertType.INFORMATION, "You have to select any user from the list. ").showAndWait();
+				} else {
+					System.out.println(selectedUser.toString());
+					@SuppressWarnings("unused")
+					User user = DaoFactory.INSTANCE.getUserDao().deleteUser(selectedUser);
+					MainAdminPageController.usersStage.getScene().getWindow().hide();
+				}
 
 			}
 		});
