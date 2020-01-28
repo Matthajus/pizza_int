@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import upjs.sk.pizza_int.EditUserPageController;
 import upjs.sk.pizza_int.Interfaces.UserDao;
 import upjs.sk.pizza_int.Models.User;
 
@@ -68,6 +69,37 @@ public class MysqlUserDao implements UserDao {
 			// nasetujeme a vratime ho (otazniky v selecte sa nizssie nahradia za meno a
 			// heslo)
 			User user = jdbcTemplate.queryForObject(sql, new Object[] { login, password }, new RowMapper<User>() {
+
+				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+					User user = new User();
+					user.setId(rs.getLong("idUsers"));
+					user.setName(rs.getString("Name"));
+					user.setSurname(rs.getString("Surname"));
+					user.setLogin(rs.getString("Login"));
+					user.setPassword(rs.getString("Password"));
+					user.setEmail(rs.getString("Email"));
+					user.setTel_number(rs.getString("Tel_number"));
+					user.setIsicCardNumber(rs.getString("IsicCardNumber"));
+					user.setRole(rs.getInt("Role"));
+					return user;
+				}
+			});
+			return user;
+		} catch (EmptyResultDataAccessException e) {
+			// ak sa taky user nenachadza vratime null
+			return null;
+		}
+	}
+
+	// metoda na zistenie, ci sa v databaze nachadza user podla loginu a hesla
+	@Override
+	public User getUserByName(String name) {
+		String sql = "SELECT idUsers, Name, Surname, Login, Password, Email, Tel_number, IsicCardNumber, Role FROM users WHERE Name = ?;";
+
+		try {
+			// ak sme nasli takeho usera, ktory ma prislusne meno, tak ho
+			// nasetujeme a vratime ho (otazniky v selecte sa nizssie nahradia za meno
+			User user = jdbcTemplate.queryForObject(sql, new Object[] { name }, new RowMapper<User>() {
 
 				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 					User user = new User();
@@ -155,6 +187,19 @@ public class MysqlUserDao implements UserDao {
 
 		String sql2 = "DELETE FROM `pizza_int`.`users` WHERE (`idUsers` = '" + user.getId() + "');";
 		jdbcTemplate.update(sql2);
+
+		return user;
+	}
+
+	@Override
+	public User editUser(User user) {
+
+		String sql = "UPDATE `pizza_int`.`users` SET " + "`Name` = '" + user.getName() + "', " + "`Surname` = '"
+				+ user.getSurname() + "', " + "`Login` = '" + user.getLogin() + "', `Password` = '" + user.getPassword()
+				+ "', " + "`Email` = '" + user.getEmail() + "', " + "`Tel_number` = '" + user.getTel_number() + "', "
+				+ "`IsicCardNumber` = '" + user.getIsicCardNumber() + "' " + "WHERE (`Name` = '"
+				+ EditUserPageController.selectedUser.getName() + "');";
+		jdbcTemplate.update(sql);
 
 		return user;
 	}

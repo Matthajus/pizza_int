@@ -13,7 +13,7 @@
             <InnerShadow choke="0.21" color="#2c170e" height="43.0" radius="21.5" width="45.0" />
          </effect>
       </ListView>
-      <Button fx:id="deleteOrderButton" layoutX="376.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #e9d49e;" text="Delete order" textFill="#2c170e">
+      <Button fx:id="deleteOrderButton" layoutX="376.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #e9d49e;" text="Delete order" textFill="#2c170e" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="50.0">
          <effect>
             <InnerShadow choke="0.21" color="#2c170e" height="48.0" radius="25.25" width="55.0" />
          </effect>

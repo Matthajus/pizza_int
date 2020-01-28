@@ -18,4 +18,8 @@ public interface UserDao {
 
 	User deleteUser(User user);
 
+	User editUser(User user);
+
+	User getUserByName(String name);
+
 }

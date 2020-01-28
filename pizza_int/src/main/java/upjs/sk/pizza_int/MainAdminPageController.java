@@ -32,6 +32,7 @@ public class MainAdminPageController {
 
 	public static Stage historyStage = new Stage();
 	public static Stage usersStage = new Stage();
+	public static Stage editUserStage = new Stage();
 
 	@FXML
 	private TableView<Pizza> pizzaListTableView;
@@ -58,6 +59,9 @@ public class MainAdminPageController {
 	private MenuItem usersMenuItem;
 
 	@FXML
+	private MenuItem editUserMenuItem;
+
+	@FXML
 	private Menu historyMenu;
 
 	@FXML
@@ -69,8 +73,10 @@ public class MainAdminPageController {
 
 		if (LoginPageController.loggedUser.getRole() != 1) {
 			usersMenuItem.setDisable(true);
+			editUserMenuItem.setDisable(true);
 		} else {
 			usersMenuItem.setDisable(false);
+			editUserMenuItem.setDisable(false);
 		}
 
 		// vyplnanie pizzaListTableView
@@ -159,10 +165,16 @@ public class MainAdminPageController {
 				openAddPage();
 			}
 		});
-		
+
 		editPizzaMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				openEditPizzaPage();
+			}
+		});
+		
+		editUserMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				openEditUserPage();
 			}
 		});
 
@@ -253,6 +265,24 @@ public class MainAdminPageController {
 			Scene scene = new Scene(parent);
 			App.stage.setScene(scene);
 			App.stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// pomocna metoda pre otvorenie okna, kde admin bude moct editovat userov
+	private void openEditUserPage() {
+		EditUserPageController controller = new EditUserPageController();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditUserPage.fxml"));
+		fxmlLoader.setController(controller);
+		try {
+			Parent parent = fxmlLoader.load();
+			Scene scene = new Scene(parent);
+			editUserStage.setTitle("Edit user");
+			editUserStage.setScene(scene);
+			editUserStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

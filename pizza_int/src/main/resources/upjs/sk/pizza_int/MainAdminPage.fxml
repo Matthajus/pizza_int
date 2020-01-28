@@ -41,6 +41,11 @@
               <MenuItem fx:id="usersMenuItem" mnemonicParsing="false" text="Users" />
             </items>
           </Menu>
+            <Menu fx:id="editUserMenu" mnemonicParsing="false" text="Edit user">
+              <items>
+                <MenuItem fx:id="editUserMenuItem" mnemonicParsing="false" text="Edit user" />
+              </items>
+            </Menu>
             <Menu fx:id="historyMenu" mnemonicParsing="false" text="History">
                <items>
                   <MenuItem fx:id="historyMenuItem" mnemonicParsing="false" text="History" />
